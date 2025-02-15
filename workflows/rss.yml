@@ -1,17 +1,14 @@
 on:
   rss:
-    url: https://hnrss.org/newest?points=300&count=3
+    url: https://astralsea.bearblog.dev/feed/?type=rss
 jobs:
-  print:
-    name: Print
+  send_webmentions:
+    name: Send Webmentions
     runs-on: ubuntu-latest
     steps:
-      - name: Print Outputs
-        env:
-          title: ${{on.rss.outputs.title}}
-          contentSnippet: ${{on.rss.outputs.contentSnippet}}
-          link: ${{on.rss.outputs.link}}
-        run: |
-          echo title: $title
-          echo contentSnippet: $contentSnippet
-          echo link: $link
+      name: 'Send webmentions for rss item link'
+      uses: actionsflow
+      with:
+        url: https://webmention.app/check?url={{EntryUrl}}&token=6ed2d3cd-8531-474b-987c-3c47d35efc87
+        method: 'POST'
+        
