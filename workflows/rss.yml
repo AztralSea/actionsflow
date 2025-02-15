@@ -1,20 +1,2 @@
-on:
-  rss:
-    url: https://astralsea.bearblog.dev/feed/?type=rss
-jobs:
-  send_webmentions:
-    name: Send Webmentions
-    runs-on: ubuntu-latest
-    steps:
-      name: 'Send webmentions for rss item link'
-      uses: actionsflow/axios@v1
-      with:
-        url: https://webmention.app/check?url={{EntryUrl}}&token=6ed2d3cd-8531-474b-987c-3c47d35efc87
-        method: 'POST'
-        body: |
-            {
-              "link":"${{ on.rss.outputs.link }}", 
-              "title": "${{ on.rss.outputs.title }}",
-              "content":"<<<${{ on.rss.outputs.contentSnippet }}>>>"
-            }
+
         
