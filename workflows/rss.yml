@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       name: 'Send webmentions for rss item link'
-      uses: actionsflow
+      uses: actionsflow/axios@v1
       with:
         url: https://webmention.app/check?url={{EntryUrl}}&token=6ed2d3cd-8531-474b-987c-3c47d35efc87
         method: 'POST'
