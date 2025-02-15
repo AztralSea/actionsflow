@@ -2,7 +2,6 @@ on:
         rss:
                 url: https://astralsea.bearblog.dev/feed/?type=rss
 jobs:
-        jobs:
   send_webmentions:
     name: Send webmentions
     runs-on: ubuntu-latest
